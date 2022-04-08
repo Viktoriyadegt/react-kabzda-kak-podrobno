@@ -1,19 +1,12 @@
 import React, {useState} from 'react';
 import './App.css';
-import Accordion, {MenuCollapsedMode, ModeChanging, UsersUnCollapsedMode} from "./components/Accordion/Accordion";
-import {Rating, RatingValueType} from "./components/Rating/Rating";
+import {MenuCollapsedMode, ModeChanging, UsersUnCollapsedMode} from "./components/Accordion/Accordion";
+import { RatingValueType} from "./components/Rating/Rating";
 import {OnOff} from "./components/OnOff/OnOff";
-// import UnControlledAccordion from "./components/Accordion/UnControlledAccordion";
-import { UnControlledRating} from "./components/UnControlledRating/UnControlledRating";
-import UnControlledAccordion from "./components/UnControlledAccordiion/UnControlledAccordion";
+
 import {UnControlledOnOff} from "./components/UnControlledOnOff/unControlledOnOff";
-import {
-    ControlledCheckbox,
-    ControlledInput, ControlledSelect,
-    ControlledWithFixedValueInput,
-    TrackValueOffUnControlledInput,
-    UnControlledInput
-} from "./components/input/input";
+import {ControlledCheckbox, ControlledInput, ControlledSelect} from "./components/input/input.stories";
+
 
 function App() {
     let [onControlledCollapsed, setOnControlledCollapsed] = useState<boolean>(false)

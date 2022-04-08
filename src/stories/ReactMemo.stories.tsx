@@ -1,6 +1,4 @@
-import Accordion, {AccordionPropsType} from "../components/Accordion/Accordion";
-import {action} from "@storybook/addon-actions";
-import {Story} from "@storybook/react";
+
 import React, {useState} from "react";
 
 export default {
@@ -15,7 +13,7 @@ const NewMessageCounter = (props: {counter:number}) => {
     )
 }
 
-export const UsersSecret = (props: {users: Array<string>}) => {
+const UsersSecret = (props: {users: Array<string>}) => {
     console.log('users')
     return (
         <div>{props.users.map((m, i)=><div key={i}>{m}</div>)}</div>
@@ -24,8 +22,8 @@ export const UsersSecret = (props: {users: Array<string>}) => {
 const Users = React.memo(UsersSecret)
 
 
-export const Example: Story = (args) => {
-    console.log('exsample1')
+export const Example= () => {
+    console.log('exsample')
     const [counter, setCounter] = useState(0)
     const [users, setUsers] = useState(['vica', 'dasha', 'masha'])
     const addUser = () => {
