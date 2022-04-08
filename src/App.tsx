@@ -1,26 +1,92 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import Accordion, {MenuCollapsedMode, ModeChanging, UsersUnCollapsedMode} from "./components/Accordion/Accordion";
+import {Rating, RatingValueType} from "./components/Rating/Rating";
+import {OnOff} from "./components/OnOff/OnOff";
+// import UnControlledAccordion from "./components/Accordion/UnControlledAccordion";
+import { UnControlledRating} from "./components/UnControlledRating/UnControlledRating";
+import UnControlledAccordion from "./components/UnControlledAccordiion/UnControlledAccordion";
+import {UnControlledOnOff} from "./components/UnControlledOnOff/unControlledOnOff";
+import {
+    ControlledCheckbox,
+    ControlledInput, ControlledSelect,
+    ControlledWithFixedValueInput,
+    TrackValueOffUnControlledInput,
+    UnControlledInput
+} from "./components/input/input";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    let [onControlledCollapsed, setOnControlledCollapsed] = useState<boolean>(false)
+    let [ratingControlled, setRatingControlled] = useState<RatingValueType>(0)
+    let [onOffControlled, setOnOffControlled] = useState<boolean>(false)
+    console.log('App rendering')
+    return (
+        <div>
+
+            <OnOff on={onOffControlled} onChange={setOnOffControlled}/>
+
+            <UnControlledOnOff onChange={setOnOffControlled}/> {onOffControlled.toString()}
+
+            {/*<UnControlledAccordion titleValue={"Menu"}/>*/}
+            {/*<Rating value={ratingControlled} onClick={setRatingControlled}/>*/}
+         {/*   <Accordion titleValue={"Menu"}
+                       collapsed={onControlledCollapsed}
+                       onChange={() => setOnControlledCollapsed(!onControlledCollapsed)}
+                       item={[]}
+                       onClick={()=>console.log('ovhf')}
+            />*/}
+            <br/>
+            <MenuCollapsedMode/>
+            <br/>
+            <UsersUnCollapsedMode/>
+            <br/>
+            <ModeChanging/>
+
+            {/*<div><UnControlledInput/></div>
+            <div><TrackValueOffUnControlledInput/></div>
+            <div><ControlledWithFixedValueInput/></div>*/}
+            <ControlledInput/>
+
+            <br/>
+            <ControlledCheckbox/>
+            <br/>
+            <ControlledSelect/>
+
+
+
+           {/* <UnControlledRating/>*/}
+
+            {/*   <PageTitle title={"This is App component"}/>
+            <PageTitle title={"My Friends"}/>
+
+            <Accordion titleValue={"Menu"} collapsed={true}/>
+            <Accordion titleValue={"Users"} collapsed={false}/>
+            Article 2
+            <Rating value={0}/>
+            <Rating value={1}/>
+            <Rating value={2}/>
+            <Rating value={3}/>
+            <Rating value={4}/>
+            <Rating value={5}/>*/}
+        </div>
+    );
 }
+
+type PageTitlePropsType = {
+    title: string
+}
+
+function PageTitle (props: PageTitlePropsType) {
+    console.log('AppTitle rendering')
+    return <h1>{props.title}</h1>
+}
+
+function hello() {
+    alert('Hello IT-KAMASUTRA')
+}
+
+
+
+
 
 export default App;
