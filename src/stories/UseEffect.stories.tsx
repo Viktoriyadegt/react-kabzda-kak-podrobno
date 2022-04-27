@@ -33,4 +33,42 @@ export const SimpleExample = () => {
     </>
 }
 
+export const SetTimeoutExample = () => {
+    console.log('SetTimeoutExample')
+    const [counter, setCounter] = useState(0);
+    const [face, setFace] = useState(0);
+
+    useEffect(()=>{
+        console.log('useEffect every render');
+        setTimeout(()=>{
+            document.title = counter.toString();
+        },2000)
+    })
+
+
+    return <>
+       Hello, {counter} {face}
+        <button onClick={()=>setCounter(counter + 1)}>counter +</button>
+        <button onClick={()=>setFace(face + 1)}>face +</button>
+    </>
+}
+
+export const SetIntervalExample = () => {
+    console.log('SetIntervalExample')
+    const [counter, setCounter] = useState(0);
+
+    useEffect(()=>{
+        console.log('useEffect every render');
+        setInterval(()=>{
+            setCounter(state => state + 1)
+        },1000)
+    },[])
+
+
+    return <>
+       Hello, {counter}
+
+    </>
+}
+
 
