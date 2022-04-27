@@ -1,4 +1,3 @@
-
 import React, {useEffect, useState} from "react";
 
 export default {
@@ -11,25 +10,25 @@ export const SimpleExample = () => {
     const [counter, setCounter] = useState(0);
     const [face, setFace] = useState(0);
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log('useEffect every render');
         document.title = counter.toString();
     })
 
-     useEffect ( ()=> {
+    useEffect(() => {
         console.log('useEffect only first render')
         document.title = counter.toString()
-    },[])
+    }, [])
 
-     useEffect (() => {
+    useEffect(() => {
         console.log('useEffect every render and every counter change')
         document.title = counter.toString()
-    },[counter])
+    }, [counter])
 
     return <>
-       Hello, {counter} {face}
-        <button onClick={()=>setCounter(counter + 1)}>counter +</button>
-        <button onClick={()=>setFace(face + 1)}>face +</button>
+        Hello, {counter} {face}
+        <button onClick={() => setCounter(counter + 1)}>counter +</button>
+        <button onClick={() => setFace(face + 1)}>face +</button>
     </>
 }
 
@@ -38,18 +37,18 @@ export const SetTimeoutExample = () => {
     const [counter, setCounter] = useState(0);
     const [face, setFace] = useState(0);
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log('useEffect every render');
-        setTimeout(()=>{
+        setTimeout(() => {
             document.title = counter.toString();
-        },2000)
+        }, 2000)
     })
 
 
     return <>
-       Hello, {counter} {face}
-        <button onClick={()=>setCounter(counter + 1)}>counter +</button>
-        <button onClick={()=>setFace(face + 1)}>face +</button>
+        Hello, {counter} {face}
+        <button onClick={() => setCounter(counter + 1)}>counter +</button>
+        <button onClick={() => setFace(face + 1)}>face +</button>
     </>
 }
 
@@ -57,16 +56,36 @@ export const SetIntervalExample = () => {
     console.log('SetIntervalExample')
     const [counter, setCounter] = useState(0);
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log('useEffect every render');
-        setInterval(()=>{
+        setInterval(() => {
             setCounter(state => state + 1)
-        },1000)
-    },[])
+        }, 1000)
+    }, [])
 
 
     return <>
-       Hello, {counter}
+        Hello, {counter}
+
+    </>
+}
+
+export const Clock = () => {
+    console.log('Clock')
+    const [date, setDate] = useState<Date>();
+
+    useEffect(() => {
+        console.log('useEffect every render');
+        setInterval(() => {
+            setDate(new Date())
+        }, 1000)
+    }, [])
+
+    const stringTime = date?.toLocaleTimeString()
+    //const stringDate = date?.toLocaleDateString()
+    return <>
+        {stringTime}
+       {/* {stringDate}*/}
 
     </>
 }
